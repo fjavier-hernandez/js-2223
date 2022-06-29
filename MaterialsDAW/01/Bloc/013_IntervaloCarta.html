@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+/*
+Vamos a mejorar el ejercicio anterior creando un programa que pida al usuario:
+
+la hora de inicio (ej. 15:00)
+la hora de finalización (ej. 17:00)
+el intervalo de minutos (sólo el número, ej. 15)
+Y muestre por consola todas las horas que van desde la hora de inicio a la de finalización de X en X minutos (ej. 15:00, 15:15, 15:30, 15:45, 16:00, 16:15, 16:30, 16:45, 17:00).
+
+Debes controlar:
+
+las horas de inicio y fialización deben ser una hora válida (la hora un número entero entre 0 y 24 y los minutos un número entero entre 0 y 59, ambos separados por el carácter ":")
+el intervalo de minutos deben ser un número entero mayor que 0
+si un valor introducido no es correcto se muestra al usuario un mensaje informando del error (un alert) y se le vuelve a pedir el valor
+en la consola las horas y los minutos se deben mostrar siempre con 2 números (09:03 y no 9:3)
+*/
+        
+        function validaHora(hora){            
+            var result = false;
+
+            if (hora.length!=5){
+                alert("Introducir HH:MM");
+                return false;
+            }
+
+            var a=hora.charAt(0); //<=2
+	        var b=hora.charAt(1); //<4
+	        var c=hora.charAt(2); //:
+	        var d=hora.charAt(3); //<=5
+            
+            if ((a==2 && b>3) || (a>2)) {
+                alert("El valor que introdujo en la Hora no corresponde, introduzca un digito entre 00 y 23");
+            }else if (d>5) {
+                alert("El valor que introdujo en los minutos no corresponde, introduzca un digito entre 00 y 59");
+            }else if (c!=':') {
+                alert("Introduzca el caracter ':' para separar la hora, los minutos y los segundos");
+            }else {
+                result = true;
+            }
+
+            return result;
+            
+        }
+
+        let horaIni, horaFin;
+
+        do{
+            horaIni =  prompt("Introduce hora Inicio (formato HH:MM):");
+        } while (!validaHora(horaIni))
+
+        do{
+            horaFin =  prompt("Introduce hora Fin (formato HH:MM):");
+        } while (!validaHora(horaFin))
+
+
+        let hIni = parseInt(horaIni.charAt(0) + horaIni.charAt(1));
+        let mIni = parseInt(horaIni.charAt(3) + horaIni.charAt(4));
+
+        let hFin = parseInt(horaFin.charAt(0) + horaFin.charAt(1));
+        let mFin = parseInt(horaFin.charAt(3) + horaFin.charAt(4));
+
+        // Falta validar que sea un número entero positivo
+        let intervalo = parseInt(prompt("Introduce intervalo de minutos:"));
+
+        for (i=hIni;i<=hFin;i++) {
+            
+            salir = false;
+
+            // comprobamos el valor inicial de los minutos
+            if (i == hIni) {
+                j = mIni;
+            } else {
+                j = j % 60;
+            }
+
+            while (!salir) {
+                if (j > mFin && i == hFin) {
+                    salir = true;
+                } else if (j >= 60) {
+                    salir = true;
+                } else {
+                    if(j<10){
+                        console.log(i + ":" + "0" + j); 
+                    }else{
+                        console.log(i + ":" + j);
+                    }
+                    j += intervalo;
+                }
+            }
+        }
+        console.log(i + ":" + "0" + (j%60));  
+
+
+    </script>
+</body>
+</html>

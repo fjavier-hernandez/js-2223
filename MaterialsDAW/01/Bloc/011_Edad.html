@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var comprueba=0;
+        do{
+            var edad= prompt("¿Introduce tu edad?"); // pide edad a usuario.
+
+            if (isNaN(edad)){
+                alert("La edad introducida no es un número");
+            }else if(edad<0){
+                alert("La edad debe ser positiva");          
+            }else if (edad==""){
+                alert("Debe introducir algún dato");
+            }else if(!Number.isInteger(edad)){
+                alert("Introduce la edad sin decimales");
+            } else {
+                comprueba=1;
+            }
+        } while(comprueba==0)
+        
+        /* Comprobaciones rango de edad. */
+
+        if (edad<18) {
+            alert("Menor de edad");
+        } else if(edad>=18 && edad<=65) {
+            alert("Trabajando o estudiando");
+        } else {
+            alert("Jubilado");
+        }
+    </script>
+</body>
+</html>

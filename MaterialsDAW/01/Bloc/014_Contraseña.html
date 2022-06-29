@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Ejercicio 1.1.d: contraseña
+
+    Crea un programa que pida al usuario que introduzca una contraseña y compruebe si es o no segura. Para ello comprobará:
+
+    que su longitud sea mayor o igual de 8 caracteres
+    que contiene alguna mayúscula
+    que contiene alguna minúscula
+    que contiene algún número
+    que contiene alguno de estos caracteres: guión, barra baja, igual, asterisco, mas, dólar, arroba o almohadilla
+
+    Si cumple todos los requisitos se informará por consola que la contraseña introducida es segura.
+    Si no cumple 1 o 2 se le dirá que es poco segura y si no cumple más de 2 se le dirá que es una contraseña débil.
+    */
+        let contrasenya = prompt("Introduce contraseña: ");
+        let segura = 0;
+        let mayuscula = 0;
+        let minuscula = 0;
+        let numero = 0;
+        let longitud = contrasenya.length;
+
+        if (longitud>=8){
+            segura++;
+        }
+
+        let mayus = contrasenya.toUpperCase();
+        let minus = contrasenya.toLowerCase();
+
+        for(i=0;i<longitud;i++){
+            let caracter = contrasenya.charAt(i);
+            if (!isNaN(caracter)){ 
+                numero = 1;
+            }else{
+                if (caracter == mayus.charAt(i)) { 
+                    mayuscula = 1;
+                }else if (caracter == minus.charAt(i)) { 
+                    minuscula = 1;
+                }
+
+            }           
+        }
+
+        segura+=mayuscula;
+        segura+=minuscula;
+        segura+=numero;
+
+        const regex = new RegExp("[-_=*+$@#]");
+        /*if (contrasenya.includes('-') || contrasenya.includes('_')
+            || contrasenya.includes('=') || contrasenya.includes('*') || contrasenya.includes('+')
+            || contrasenya.includes('$') || contrasenya.includes('@') || contrasenya.includes('#')) { */
+        if (regex.test(contrasenya)){
+            segura++; 
+        }
+
+        if (segura<=2){
+            alert("La contraseña es poco segura");
+        }else if(segura>2 && segura<5){
+            alert("La contraseña es débil");
+        }else if (segura>=5){
+            alert("La contraseña es segura");
+        }
+
+    </script>
+</body>
+</html>

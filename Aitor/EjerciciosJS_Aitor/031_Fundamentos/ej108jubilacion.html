@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var edad = parseInt(prompt("Introduce Edad: "));
+        var edadJubilacion = parseInt(prompt("Introduce edad de Jubilación: "));
+        
+        //Para calcular el año actual podemos utilizar las siguientes funciones.
+        var ahora = new Date();
+        var anyo = ahora.getFullYear();
+
+        var restoJubilacion = edadJubilacion - edad;
+        var anyoJubilación = anyo + restoJubilacion;
+
+        alert ("Te quedan " + restoJubilacion + " años para jubilarte y el año de jubilación será el  " + anyoJubilación);
+
+
+    </script>
+</body>
+</html>

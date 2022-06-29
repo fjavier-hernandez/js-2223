@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cuboLambda</title>
+</head>
+<body>
+    <script>
+    /* EJERCICIO: Haz una arrow function que devuelva el cubo del número pasado como 
+    parámetro y pruébala desde la consola. Escríbela primero en la forma habitual y luego 
+    la "traduces" a arrow function. */
+
+    let cubo = function (numero){
+        return numero * numero * numero;
+    }
+
+    let cuboLambda = numero => numero * numero * numero;
+
+    let numero = parseInt(prompt("Introduce número para saber el cubo: "));
+    alert("El resultado es utilizando función anónima: " + cubo(numero));
+    alert("El resultado es utilizando función Lambda: " + cuboLambda(numero));
+
+    </script>
+    
+</body>
+</html>

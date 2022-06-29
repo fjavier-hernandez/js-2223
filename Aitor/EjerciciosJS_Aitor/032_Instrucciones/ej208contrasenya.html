@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var user = prompt("Introduce ususario: ");
+        
+        var contBuena = "user";
+        var numIntentos = 0;
+        
+        do {
+            var contrasenya = prompt("Introduce contraseña: ");
+            if(contrasenya===contBuena){
+                numIntentos++;
+            }else{
+                alert("Contraseña Incorrecta");
+            }
+        } while(numIntentos<2)
+        
+        alert("Contraseña correcta");
+
+    </script>
+</body>
+</html>

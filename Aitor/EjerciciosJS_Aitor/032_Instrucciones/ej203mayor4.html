@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function mayor2(num1,num2){
+        var mayor = 0;
+        if (num1>num2){
+            return num1;
+        }else{
+            return num2;
+        }
+    }
+
+    function mayor4(num1,num2,num3,num4){
+        return mayor2(mayor2(num1,num2),mayor2(num3,num4));
+    }
+
+    var numero1 = parseInt(prompt(" Introduce número 1: "));
+    var numero2 = parseInt(prompt(" Introduce número 2: "));
+    var numero3 = parseInt(prompt(" Introduce número 3: "));
+    var numero4 = parseInt(prompt(" Introduce número 4: "));
+
+    alert ("El número mayor es: " + mayor4(numero1,numero2,numero3,numero4));
+    </script>
+</body>
+</html>

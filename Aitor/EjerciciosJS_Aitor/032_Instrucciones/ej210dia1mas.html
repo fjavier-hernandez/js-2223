@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /* Escribe un programa
+    similar a un calendario de manera que a partir
+    de día, mes y año devuelva una cadena con la
+    fecha dentro de un día.*/
+
+    var dia = parseInt(prompt("Introduce dia"));
+    var mes = parseInt(prompt("Introduce mes: "));
+    var anyo = parseInt(prompt("Introduce año: "));
+    var comprobacionMes=0;
+
+    if (mes > 0 && mes < 12){
+        if (mes == 2){
+            if(dia>28){
+                dia=1;
+                mes++;
+            }else{
+                dia++;
+            }
+        }else if (mes == 12){
+            if(dia>31){
+                dia=1;
+                mes=1;
+                anyo++;
+            }else{
+                dia++;
+            } 
+        }else if (mes == 4 || mes == 6 || mes == 9 || mes == 11){ //meses de 30 días.
+            if(dia>30){
+                dia=1;
+                mes++;
+            }else{
+                dia++;
+            }
+        }else{
+            if(dia>31){
+                dia=1;
+                mes++;
+            }else{
+                dia++;
+            }
+        }
+        alert("Mañana será" + dia + "/" + mes + "/" + anyo);
+    }else{
+        alert("El mes introducido es erroneo");
+    }
+
+</script>
+</body>
+</html>
