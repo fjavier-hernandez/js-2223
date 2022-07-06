@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>012_frase</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        /* Vamos a pedir al usuario que introduzca una frase y a continuación mostraremos en la consola:
+            1. el número de caracteres (incluyendo espacios) y de palabras que tiene
+            2. la frase en mayúsculas
+            3. la frase con la primera letra de cada palabra en mayúsculas
+            4. la frase escrita con las letras al revés
+            5. la frase escrita con las palabras al revés
+            6. si es o no un palíndromo (si se lee igual al revés) pero omitiendo espacios en blanco y
+             sin diferenciar mayúsculas y minúsculas.  */
+
+        // 1. 
+
+        const frase = prompt("Introduce una frase:");
+        console.log(`El número de caracteres es: ${frase.length} y de palabras: ${frase.split(' ').length}`);
+
+        // 2.
+
+        console.log(`la frase en mayúsculas es: ${frase.toLocaleUpperCase()}`);
+
+        // 3.
+
+        const palabrasArray = frase.split(' ');
+        let primeraMayusArray = [];
+
+        for (let i in palabrasArray) {
+            let palabra = palabrasArray[i]
+            primeraMayusArray[i] = palabra.replace(/^./, palabra[0].toUpperCase());
+        }
+
+        const primeraMayus = primeraMayusArray.join(' ');
+        console.log(`la frase con la primera letra de cada palabra en mayúsculas es: ${primeraMayus}`);
+
+        //4.
+        const letrasArray = frase.split('');
+        let letrasRevesArray = letrasArray.reverse();
+        // let letrasRevesString = letrasRevesArray.toString();
+        console.log(`la frase escrita con las letras al revés: ${letrasRevesArray.join("")}`);
+
+        // 5.
+        let palabrasRevesArray = palabrasArray.reverse();
+        console.log(`la frase escrita con las palabras al revés: ${palabrasRevesArray.join(' ')}`);
+
+        // 6. 
+
+        let fraseNoEspacios = frase.split(" ").join("");
+        let reves = '';
+
+        for (let i = fraseNoEspacios.length; i >= 0; i--) {
+            reves += fraseNoEspacios.charAt(i);
+        }
+
+        if (fraseNoEspacios == reves) {
+            console.log("Es palindromo");
+            console.log(`El palindromo es: ${fraseNoEspacios}`);
+        } else {
+            console.log("No es palindromo");
+        }
+
+    </script>
+</body>
+
+</html>
