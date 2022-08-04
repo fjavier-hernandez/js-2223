@@ -35,7 +35,7 @@
         let arrayControl = estadistica(frase);
 
         for (let i = 0; i < arrayControl.length; i++) {
-            if (arrayControl[i] != 0) {
+            if (arrayControl[i] !== 0) {
                 console.log(`La letra ${String.fromCharCode(i + 65)} se ha repetido ${arrayControl[i]}`);
             }
 
