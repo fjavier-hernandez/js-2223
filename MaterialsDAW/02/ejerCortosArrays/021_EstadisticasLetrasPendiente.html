@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas Letras</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        
+        // Cuando se repite letra no la muestra.
+
+        function estadistica(frase) {
+
+            let arrayControl = Array(26).fill(0);
+            
+            for (let i = 0; i < frase.length; i++) {
+                var caracter = parseInt(frase.charCodeAt(i));
+
+                if (caracter >= 65 && caracter <= 90) {
+                    var nuevoCaracter = (caracter - 65);
+                    arrayControl[nuevoCaracter]++;
+                } 
+            }
+            
+            return arrayControl;
+            
+        }
+
+        var frase = prompt("Introduce frase para saber la estadística de Letras: ").toLocaleUpperCase();
+        let arrayControl = estadistica(frase);
+        
+        for (let i = 0; i < arrayControl.length; i++){
+            if (arrayControl[i] ==! 0){
+                console.log(`La letra ${String.fromCharCode(i+65)} se ha repetido ${arrayControl[i]}`);
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
