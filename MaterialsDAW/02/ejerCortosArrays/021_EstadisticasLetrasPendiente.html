@@ -11,32 +11,32 @@
 <body>
     <script>
         'use strict'
-        
+
         // Cuando se repite letra no la muestra.
 
         function estadistica(frase) {
 
             let arrayControl = Array(26).fill(0);
-            
+
             for (let i = 0; i < frase.length; i++) {
                 var caracter = parseInt(frase.charCodeAt(i));
 
                 if (caracter >= 65 && caracter <= 90) {
                     var nuevoCaracter = (caracter - 65);
-                    arrayControl[nuevoCaracter]++;
-                } 
+                    arrayControl[nuevoCaracter] += 1;
+                }
             }
-            
+
             return arrayControl;
-            
+
         }
 
         var frase = prompt("Introduce frase para saber la estadística de Letras: ").toLocaleUpperCase();
         let arrayControl = estadistica(frase);
-        
-        for (let i = 0; i < arrayControl.length; i++){
-            if (arrayControl[i] ==! 0){
-                console.log(`La letra ${String.fromCharCode(i+65)} se ha repetido ${arrayControl[i]}`);
+
+        for (let i = 0; i < arrayControl.length; i++) {
+            if (arrayControl[i] != 0) {
+                console.log(`La letra ${String.fromCharCode(i + 65)} se ha repetido ${arrayControl[i]}`);
             }
 
         }
