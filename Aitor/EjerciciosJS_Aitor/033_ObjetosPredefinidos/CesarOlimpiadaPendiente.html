@@ -14,23 +14,25 @@
         // Realizar un programa que codifique y decodifique en código Cesar.
 
         function codifica(frase, numeroCesar) {
-            let resultado = '';
+            var resultado = '';
             for (let i = 0; i < frase.lenght - 1; i++) {
-                let caracter = frase.charCodeAt(i);
-                let nuevoCaracter = -1;
+                var caracter = frase.charCodeAt(i);
+                console.log(caracter);
+                var nuevoCaracter = -1;
                 if (caracter >= 65 && caracter <= 90) {
                     nuevoCaracter = (((caracter - 65) + numeroCesar) % 26) + 65;
                     resultado += String.fromCharCode(nuevoCaracter);
-                } else if (caracter == 32) {
+                } else if (caracter = 32) {
                     resultado += ' ';
                 }
             }
+            console.log(resultado); 
             return resultado;
         }
 
 
 
-       function decodifica(frase, numeroCesar) {
+       /* function decodifica(frase, numeroCesar) {
         let resultado = '';
             for (let i = 0; i < frase.lenght - 1; i++) {
                 let caracter = frase.charCodeAt(i);
@@ -43,11 +45,11 @@
                 }
             }
             return resultado;
-        }
+        } */
 
         let metodo = prompt("¿Quieres codificar o decodificar? (c/d)");
         let numeroCesar = prompt("¿cuál es el número del cesar? [1,25]");
-        let frase = prompt("¿cuál es la frase? (minusculas)");
+        let frase = prompt("¿cuál es la frase? (mayúsculas)");
 
         if (metodo === 'c') {
             alert(`la frase codificada es: ${codifica(frase, numeroCesar)}`);
