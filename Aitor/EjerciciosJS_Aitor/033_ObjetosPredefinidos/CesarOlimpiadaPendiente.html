@@ -18,12 +18,23 @@
 
         function codifica(frase, numeroCesar) {
             var resultado = '';
-            for (let i = 0; i < frase.length; i++) {           
+
+            let codigoA = "A".charCodeAt(0);    // 65
+            let codigoZ = "Z".charCodeAt(0);    // 90
+
+            let cantidadLetras = codigoZ - codigoA + 1; // 26
+
+            for (let i = 0; i < frase.length; i++) {
                 var caracter = parseInt(frase.charCodeAt(i));
-                if (caracter >= 65 && caracter <= 90) {
-                    var nuevoCaracter = (((caracter + 65) - numeroCesar) % 26) + 65;
+
+                if (caracter >= codigoA && caracter <= codigoZ) {
+                    // var nuevoCaracter = caracter + numeroCesar;
+                    // if (nuevoCaracter > 90) {
+                    //    nuevoCaracter -= 26;
+                    // }
+                    var nuevoCaracter = (((caracter + codigoA) - numeroCesar) % cantidadLetras) + codigoA;
                     resultado += String.fromCharCode(nuevoCaracter);
-                } else if (caracter = 32) {
+                } else if (caracter == 32) {
                     resultado += ' ';
                 }
             }
@@ -32,12 +43,15 @@
 
         function decodifica(frase, numeroCesar) {
             var resultado = '';
-            for (let i = 0; i < frase.length; i++) {           
+            for (let i = 0; i < frase.length; i++) {
                 var caracter = parseInt(frase.charCodeAt(i));
-                if (caracter >= 65 && caracter <= 90) {
-                    var nuevoCaracter = (((caracter - 65) - numeroCesar) % 26) + 65;
+                if (caracter >= 65 && caracter <= 90) { // cogemos sólo las mayúsculas
+                    var nuevoCaracter = caracter - numeroCesar;
+                    if (nuevoCaracter < 65) {
+                        nuevoCaracter += 26;
+                    }
                     resultado += String.fromCharCode(nuevoCaracter);
-                } else if (caracter = 32) {
+                } else if (caracter == 32) {
                     resultado += ' ';
                 }
             }
@@ -48,9 +62,9 @@
         let numeroCesar = parseInt(prompt("¿cuál es el número del cesar? [1,25]"));
         let frase = prompt("¿cuál es la frase? (mayúsculas)").toLocaleUpperCase();
 
-        if (metodo === 'c') {
+        if (metodo === 'c' || metodo === 'C') {
             alert(`la frase codificada es: ${codifica(frase, numeroCesar)}`);
-        } else if (metodo === 'd') {
+        } else if (metodo.toUpperCase() === 'D') {
             alert(`la frase decodificada es: ${decodifica(frase, numeroCesar)}`);
         }
 
