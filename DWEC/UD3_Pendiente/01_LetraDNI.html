@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LetraDNI</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        function dniLetra(dni) {
+            let longitud = dni.length;
+            let resultado = false;
+
+            let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+            if (longitud >= 2 && longitud <= 9) {
+                let numeros = dni.substr(0, longitud - 1);
+                let letra = dni.charAt(longitud - 1);
+
+                let posicion = parseInt(numeros) % 23;
+                resultado = (letras.charAt(posicion) == letra);
+            }
+
+            return resultado;
+        }
+
+        function pideDNI(){
+            let dni = prompt('Introduce DNI (Parar con -1): ');
+            return dni;
+        }
+
+        var dni = '1';
+        var letrasDNI = [];
+        /* console.log(dni);
+        console.log(IdDNI); */
+
+        if (dni !== '-1') {
+            var IdDNI = setInterval(dni=pideDNI, 5000);
+            letrasDNI.push(dniLetra(dni));
+            /* console.log(dni);
+            console.log(IdDNI);
+            console.log(letrasDNI); */
+        } else {
+            clearInterval(IdDNI);
+            alert(letrasDNI);
+        }
+
+
+    </script>
+</body>
+
+</html>

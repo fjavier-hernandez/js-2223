@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeros DNI por letra</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        function dniLetra(letra) {
+
+            let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            let posicion = letras.lastIndexOf(letra);
+            let resultado = [];
+
+            for (let i = 0; i <= 999; i++) {
+
+                let numero = i % 23;
+                if (numero == posicion)
+                resultado.push(i);
+            }
+
+            return resultado;
+        }
+
+        let letra=prompt('Introduce la letra DNI: ');
+        alert(dniLetra(letra));
+
+
+    </script>
+
+</body>
+
+</html>

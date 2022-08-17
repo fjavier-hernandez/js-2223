@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primo y Palindromo</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        function primo(num) {
+
+            if (num == 0 || num == 1) return false;
+
+            let salir = false;
+            for (let i = 2; i < (num / 2) + 1 && !salir; i++) { // NO ENTIENDO PORQUE !salir
+                if (num % i == 0) {
+                    salir = true;
+                }
+            }
+            return !salir;
+        }
+
+        function palindromo(num) {
+            let resultado = false;
+            let numArray = Array.from(String(num), Number); // Pasar numero a Array para el reverse.
+            let numero = parseInt(numArray.join(""));       // Se vuelve a numero para comparación.
+            let revesArray = numArray.reverse();
+            let reves = parseInt(revesArray.join(""));
+
+            if (numero === reves) {
+                resultado = true;
+            }
+
+            return resultado;
+        }
+
+        let primoPalindromo = [];
+        //const numerosParaProbar = Array.from(Array(100001), (el, i) => i)
+        const numerosParaProbar = [...Array(100001)].map((el, i) => i) // Array = [0,1,2..100000]
+
+        for (let num of numerosParaProbar) {
+            if ((primo(num) && palindromo(num))) {
+                primoPalindromo.push(num);
+            }
+        }
+
+        console.log(primoPalindromo);
+        alert(primoPalindromo);
+
+    </script>
+
+</body>
+
+</html>
