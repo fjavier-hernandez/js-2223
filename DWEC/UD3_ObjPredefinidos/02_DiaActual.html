@@ -13,7 +13,7 @@
         'use strict'
 
         let date = new Date();
-        const arrayDate = [date.getDate(), date.getMonth(), date.getFullYear()];
+        const arrayDate = [date.getDate(), date.getMonth()+1, date.getFullYear()];
         let idC = setTimeout(() => alert(arrayDate), 5000);
 
         //clearTimeout(idC);

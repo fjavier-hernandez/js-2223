@@ -12,24 +12,26 @@
     <script>
         'use strict'
 
-        function dniLetra(letra) {
+        function dnisPorLetra(letra) {
 
             let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-            let posicion = letras.lastIndexOf(letra);
+            let posicionLetraUsuario = letras.lastIndexOf(letra);
             let resultado = [];
 
             for (let i = 0; i <= 999; i++) {
 
-                let numero = i % 23;
-                if (numero == posicion)
-                resultado.push(i);
+                let posicionLetraCalculada = i % 23;
+                if (posicionLetraCalculada == posicionLetraUsuario){ 
+                    resultado.push(i); 
+                }
+                    
             }
 
             return resultado;
         }
 
         let letra=prompt('Introduce la letra DNI: ');
-        alert(dniLetra(letra));
+        alert(dnisPorLetra(letra));
 
 
     </script>

@@ -17,7 +17,8 @@
             if (num == 0 || num == 1) return false;
 
             let salir = false;
-            for (let i = 2; i < (num / 2) + 1 && !salir; i++) { // NO ENTIENDO PORQUE !salir
+            for (let i = 2; i < (num / 2) + 1 && !salir; i++) { 
+                // !salir, para que no siga iterando cuando encuentre un divisor.
                 if (num % i == 0) {
                     salir = true;
                 }

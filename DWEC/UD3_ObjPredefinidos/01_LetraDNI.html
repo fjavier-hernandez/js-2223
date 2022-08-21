@@ -12,7 +12,7 @@
     <script>
         'use strict'
 
-        function dniLetra(dni) {
+        function esDNIvalido(dni) {
             let longitud = dni.length;
             let resultado = false;
 
@@ -29,26 +29,32 @@
             return resultado;
         }
 
-        function pideDNI(){
+        function pideDNI() {
+            
             let dni = prompt('Introduce DNI (Parar con -1): ');
-            return dni;
+            if (dni !== '-1') {
+                if (esDNIvalido(dni)) {
+                    letrasDNI.push(dni.charAt(dni.length - 1));
+                }
+
+                /* console.log(dni);
+                console.log(IdDNI);
+                console.log(letrasDNI); */
+            } else {
+                clearInterval(IdDNI); // La cancelación del reloj siempre dentro de la función que llamamos.
+                alert(letrasDNI);
+                /* console.log(dni);
+                console.log(IdDNI);
+                console.log(letrasDNI); */
+            }
         }
 
-        var dni = '1';
+        
         var letrasDNI = [];
         /* console.log(dni);
         console.log(IdDNI); */
 
-        if (dni !== '-1') {
-            var IdDNI = setInterval(dni=pideDNI, 5000);
-            letrasDNI.push(dniLetra(dni));
-            /* console.log(dni);
-            console.log(IdDNI);
-            console.log(letrasDNI); */
-        } else {
-            clearInterval(IdDNI);
-            alert(letrasDNI);
-        }
+        var IdDNI = setInterval(pideDNI, 5000);
 
 
     </script>

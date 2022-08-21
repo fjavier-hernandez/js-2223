@@ -15,9 +15,15 @@
         let cadena = prompt("Introduce la información personal con formato \
         (nombre:apellidos:telefono:email:codigopostal): ");
 
-        let array = cadena.split(':');
+        //javi:hernandez:555:javi@gmail.com:03330
 
-        alert(`El código postal es: ${array(4)} los apellidos ${array(1)} el email ${array(3)}`);
+        let array = cadena.split(':');
+        let arrayMail = array[3].split('@');
+        console.log(array);
+        console.log(arrayMail);
+
+        alert(`El código postal es: ${array[4]} los apellidos ${array[1]} el email ${array[3]} \
+        y el servidor ${arrayMail[1]}`);
 
     </script>
 
