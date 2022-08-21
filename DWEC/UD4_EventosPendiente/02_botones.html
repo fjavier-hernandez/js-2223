@@ -19,20 +19,18 @@
         'use strict'
 
         function saludos(evento) {
-            console.log(evento.currentTarget.id);
-            
 
             if (evento.currentTarget.id === "buttonSaludo"){
-                var idInterval = setInterval(() => alert('Hola'), 5000);
-                console.log(idInterval);
+                idInterval = setInterval(() => alert('Hola'), 5000);
+
             }else if (evento.currentTarget.id === "buttonDespedida"){
-                console.log(idInterval);
                 clearInterval(idInterval);
                 alert('Adios');
             }
 
         }
 
+        var idInterval = 0;
         document.getElementById("buttonSaludo").addEventListener("click", saludos);
         document.getElementById("buttonDespedida").addEventListener("click", saludos);
 
