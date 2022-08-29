@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #numeroNuevoParrafo {
+            border: solid #000000 1px;
+            background-color: aliceblue;
+            color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: xx-large;
+            height: 100%;
+            overflow: auto;
+            width: 100%;
+        }
+    </style>
+
+    <title>Número Nuevo</title>
+</head>
+
+<body>
+    <input id="numeroNuevoId" type="button" value="Nuevo Número" />
+    <p id="numeroNuevoParrafo"></p>
+
+    <script>
+        'use strict'
+
+        function nuevoNumero() {
+
+            let numeroRandom = Math.floor(Math.random() * 100);
+            let numeroParrafo = document.getElementById("numeroNuevoParrafo");
+            numeroParrafo.innerHTML = "<ul><li>" + numeroRandom + "</li></ul>";
+        }
+
+        document.getElementById("numeroNuevoId").addEventListener("click", nuevoNumero);
+    </script>
+
+</body>
+
+</html>

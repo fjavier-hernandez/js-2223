@@ -1,0 +1,8 @@
+var chico = document.querySelector("");
+var chica = document.querySelector("");
+
+var rutaChico = chico.src;
+var rutaChica = chica.src;
+
+chico.src = rutaChica;
+chica.src = rutaChico;

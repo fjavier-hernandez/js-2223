@@ -5,20 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style type="text/css">
-        #DNIs {
-            border: solid #000000 1px;
-            background-color: aliceblue;
-            color: #000000;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: xx-large;
-            height: 100%;
-            overflow: auto;
-            width: 100%;
-        }
-    </style>
-
     <title>Muestra DNIs 4dig</title>
 </head>
 
@@ -28,22 +14,34 @@
         'use strict'
 
         function mostrarDNI(evento) {
+            // capturamos la letra
             let letra = String.fromCharCode(evento.keyCode).toLocaleUpperCase(); // Se pasa el código a letra mayúscula.
+            
+            // obtenemos los dnis.
             let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
             let posicionLetraUsuario = letras.lastIndexOf(letra);
-            let resultado = [];
+            let dnisPorLetraArray = [];
 
             for (let i = 0; i <= 9999; i++) {
 
                 let posicionLetraCalculada = i % 23;
-                
+
                 if (posicionLetraCalculada == posicionLetraUsuario) {
-                    resultado.push(i.toString().padStart(4,0)+`${letras.charAt(posicionLetraCalculada)}`);
+                    let cuatroDigitos = i.toString().padStart(4, 0);
+                    let letraDni = letras.charAt(posicionLetraCalculada);
+                    dnisPorLetraArray.push(cuatroDigitos + letraDni);
                 }
             }
 
+            // genramos lista con los dnis y se muestra en el HTML.
             let elementoDNIs = document.getElementById("dniPorLetra");
-            elementoDNIs.innerHTML = 'Los DNIs de 4 dígitos de la letra pulsada son: ' + resultado;
+            let lista = "<ol>"
+            for (let j = 0; j < dnisPorLetraArray.length; j++) {
+                lista += "<li>" + dnisPorLetraArray[j] + "</li>"
+            }
+            lista += "</ol>"
+            elementoDNIs.innerHTML = 'Los DNIs de 4 dígitos de la letra pulsada son: ' + lista;
+
         }
 
         document.onkeyup = mostrarDNI;

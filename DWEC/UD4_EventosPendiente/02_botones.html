@@ -11,28 +11,24 @@
 <body>
 
     <input id="buttonSaludo" type="button" value="Comenzar Saludos" />
-
     <input id="buttonDespedida" type="button" value="Parar Saludos" />
 
     <script>
 
         'use strict'
 
-        function saludos(evento) {
-
-            if (evento.currentTarget.id === "buttonSaludo"){
-                idInterval = setInterval(() => alert('Hola'), 5000);
-
-            }else if (evento.currentTarget.id === "buttonDespedida"){
-                clearInterval(idInterval);
-                alert('Adios');
-            }
-
+        function saludo(evento) {
+            temporizador = setInterval(() => alert('Hola'), 5000);
         }
 
-        var idInterval = 0;
-        document.getElementById("buttonSaludo").addEventListener("click", saludos);
-        document.getElementById("buttonDespedida").addEventListener("click", saludos);
+        function despedida(evento) {
+            clearInterval(temporizador);
+            alert('Adios');
+        }
+
+        var temporizador = 0;
+        document.getElementById("buttonSaludo").addEventListener("click", saludo);
+        document.getElementById("buttonDespedida").addEventListener("click", despedida);
 
         /* function inicio() {
             saludos();
