@@ -30,34 +30,22 @@
 
     <script>
         // Mejora: NO SE PUEDEN REPETIR LOS NÚMEROS -> HACER.
-        'use strict'
-
-        function compruebaIgualdad(numerosRandomArray) {  
-            let resultado = false;
-            for (let i = 0; i < numerosRandomArray.length; i++) {
-                if (numeroRandom === numerosRandomArray[i]) {
-                    resultado = true;
-                }
-            }
-        }
-
+        'use strict' <
         function nuevoNumero() {
-            numeroRandom = Math.floor(Math.random() * 100);
-            let listaDesordenada = document.getElementById("lista");
-            numerosRandomArray.push(numeroRandom);
+            let numeroRandom = Math.floor(Math.random() * 100);
 
-            // habría que hacer algo recursivo??.
-            if (compruebaIgualdad(numerosRandomArray)){
+            while (numeroRandomArray.includes(numeroRandom)) {
                 numeroRandom = Math.floor(Math.random() * 100);
             }
 
-            listaDesordenada.innerHTML += "<li>" + numeroRandom + "</li>";
-            
+            // Ya sé que el numeroRandom no estaba en el array
+            numerosRandomArray.push(numeroRandom);
+            document.getElementById("lista").innerHTML += "<li>" + numeroRandom + "</li>";
+
         }
 
-        var numeroRandom = 0;
         var numerosRandomArray = [];
-        window.onload = function () {
+        window.onload = function() {
             document.getElementById("numeroNuevoId").addEventListener("click", nuevoNumero);
         }
     </script>
