@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posición Ratón</title>
+</head>
+
+<body>
+    <p id="coordenadas" style="height: 100%; background-color: aqua; font-size: xx-large;"> SI 
+        PINCHAS EN ESTE PARRAFO SE MUESTRAN LAS COORDENADAS DEL RATÓN EN CONSOLA</p>
+
+    <script>
+
+        'use strict'
+
+        function mostrarCoordenadas(evento) {
+
+            console.log("Coordenada X: " + evento.clientX);
+            console.log("Coordenada Y: " + evento.clientY);
+
+        }
+
+        document.getElementById("coordenadas").onmouseover = mostrarCoordenadas;
+
+
+    </script>
+
+</body>
+
+</html>

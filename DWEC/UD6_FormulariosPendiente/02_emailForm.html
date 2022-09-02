@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Formulario</title>
+</head>
+<body>
+    <form onsubmit="return validarFormatoDni();">
+        <p>
+            <label for="email">Nombre:</label>
+            <input type="text" name="infoPersonal" id="email"></br>
+            <input type="submit" value="Enviar"></br>
+        </p>
+    </form>
+    
+    <script>
+        'use strict'
+        function validaMail(email) {
+            let validacion = false;
+            let regularExpresionMail = new RegExp("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/");
+            if (regularExpresionMail.test(email)) {
+                validacion = true;
+            }
+            return validacion;
+        }
+
+        function validaServidor(email) {
+            let servidor = email.substr(email.indexOf('@') + 1)
+            let validacion = false;
+
+            for (let i=0;i<listaServidores.length;i++){
+                if(listaServidores[i] === servidor){
+                    validacion = true;
+                }
+            }
+        }
+
+        window.onload=function() {
+            var listaServidores=[ "terra.es" , "google.com" , "marca.es" , "yahoo.es" ];
+            var elementoMail = document.getElementById("email");
+            elementoDni.addEventListener("focusout", () => {
+                if (validaMail(elementoMail.value) && validaServidor(elementoMail.value)) {
+                    alert('Formato Mail Correcto y Servidor Admitido');
+                } else if(validaMail(elementoMail.value) && !validaServidor(elementoMail.value)){
+                    alert('Formato Mail Correcto y Servidor No Admitido');
+                }else if(!validaMail(elementoMail.value) && validaServidor(elementoMail.value)){
+                    alert('Formato Mail Incorrecto y Servidor Admitido');
+                }else if(!validaMail(elementoMail.value) && !validaServidor(elementoMail.value)){
+                    alert('Formato Mail Incorrecto y Servidor No Admitido');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

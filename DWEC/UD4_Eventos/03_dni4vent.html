@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muestra DNIs 4dig</title>
+</head>
+
+<body>
+    <p id="dniPorLetra"></p>
+    <script>
+        'use strict'
+
+        function mostrarDNI(evento) {
+            // capturamos la letra
+            let letra = String.fromCharCode(evento.keyCode).toLocaleUpperCase(); // Se pasa el código a letra mayúscula.
+            
+            // obtenemos los dnis.
+            let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            let posicionLetraUsuario = letras.lastIndexOf(letra);
+            let dnisPorLetraArray = [];
+
+            for (let i = 0; i <= 9999; i++) {
+
+                let posicionLetraCalculada = i % 23;
+
+                if (posicionLetraCalculada == posicionLetraUsuario) {
+                    let cuatroDigitos = i.toString().padStart(4, 0);
+                    let letraDni = letras.charAt(posicionLetraCalculada);
+                    dnisPorLetraArray.push(cuatroDigitos + letraDni);
+                }
+            }
+
+            // genramos lista con los dnis y se muestra en el HTML.
+            let elementoDNIs = document.getElementById("dniPorLetra");
+            let lista = "<ol>"
+            for (let j = 0; j < dnisPorLetraArray.length; j++) {
+                lista += "<li>" + dnisPorLetraArray[j] + "</li>"
+            }
+            lista += "</ol>"
+            elementoDNIs.innerHTML = 'Los DNIs de 4 dígitos de la letra pulsada son: ' + lista;
+
+        }
+
+        document.onkeyup = mostrarDNI;
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* COMO SE HARÍA PARA QUE SE ALINEEN EN VERTICAL. -> HACER EN TABLA */
+        input label {
+            vertical-align: text-bottom;
+        }
+    </style>
+
+    <title>Marca Checkbox</title>
+</head>
+
+<body>
+    <input id="generaCheck" type="button" value="Genera Checkbox" />
+    <input id="marcaCheck" type="button" value="Marca Checkbox" />
+    <input id="desmarcaCheck" type="button" value="Desmarca Checkbox" />
+    <input type="text" value="Javi" name="nombre">
+    <div id="cajaCheck"></div>
+
+    <script>
+        // Mejora: añadir input con una caja de texto, y comprobar que sigue funcionando. Comprobar tipo
+        'use strict'
+
+        function generacheckbox() {
+            let listaCheckbox = '';
+            for (let i = 0; i < 100; i++) {
+                let miId = 'cbox' + i;
+                listaCheckbox += '<input type="checkbox" id="' + miId + '" value="' + i + '_checkbox">';
+                let numAleatorio = Math.floor(Math.random() * 100);
+                listaCheckbox += '<label for="' + miId + '">' + numAleatorio + '</label><br>';
+
+            }
+            //console.log(listaCheckbox);
+            parrafoCheckbox.innerHTML = listaCheckbox;
+        }
+
+        function marcacheckbox() {
+            let miCaja=document.getElementById("cajaCheck");
+            let checkboxArray = miCaja.getElementsByTagName("input");
+            //console.log(checkboxArray);
+            for (let i = 0; i < checkboxArray.length; i++) {
+                checkboxArray[i].checked = true;
+            }
+        }
+
+        function desmarcacheckbox() {
+            let checkboxArray = document.getElementsByTagName("input");
+            //console.log(checkboxArray);
+            for (let i = 0; i < checkboxArray.length; i++) {
+                checkboxArray[i].checked = false;
+            }
+        }
+
+
+        var parrafoCheckbox = document.getElementById("cajaCheck");
+        document.getElementById("generaCheck").addEventListener("click", generacheckbox);
+        document.getElementById("marcaCheck").addEventListener("click", marcacheckbox);
+        document.getElementById("desmarcaCheck").addEventListener("click", desmarcacheckbox);
+
+
+    </script>
+
+</body>
+
+</html>
