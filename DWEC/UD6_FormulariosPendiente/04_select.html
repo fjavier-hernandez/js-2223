@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Select JS</title>
+</head>
+
+<body>
+
+    <!-- Realiza un formulario con dos elementos “select”. Al cambiar el primero, se actualizará el segundo.
+    Al enviar el formulario, se comprobará que ambos han sido marcados.
+    Cuando no tengan ninguna selección previa, los “select” mostrarán “Select no seleccionado”.
+    Los valores del primer “select” serán “Alicante”, “Castellón”, “Valencia”.
+    Por defecto no habrá ninguno seleccionado.
+    Los valores del segundo “select” son:
+        ● Para Alicante : “Alicante Capital”, “Elche”, “Orihuela”.
+        ● Para Castellón : “Castellón Capital”, “Oropesa”, “Vinaroz”.
+        ● Para Valencia : “Valencia Capital”, “Torrent”, “Mislata”. (Aquí saldrá por defecto
+        seleccionado “Mislata”). -->
+
+</body>
+<form id="selectCiudad" action="#">
+    <label for="menu1">Elije Provincia:</label><br>
+    <select name="menu1" id="menu1" size="2">
+        <option>Alicante</option>
+        <option>Valencia</option>
+        <option>Castellón</option>
+    </select><br>
+
+    <label for="menu2">Elije Ciudad:</label><br>
+    <select name="menu2" id="menu2" size="2"></select><br>
+
+    <input id="botonEnviar" type="submit" value="Enviar"></br>
+</form>
+
+<script>
+    'use strict'
+
+    function creaSubmenu(ciudades) {
+        let subMenu = document.getElementById("menu2");
+        let opciones = '';
+        for (let i = 0; i < ciudades.length; i++) {
+            opciones += '<option>' + ciudades[i] + '</option>';
+        }
+        subMenu.innerHTML = opciones;
+    }
+
+    function actualizaSubMenu() {
+        let seleccionProvincia = document.getElementById("menu1").selectedIndex;
+        let ciudadesA = ['Alicante Capital', 'Elche', 'Orihuela'];
+        let ciudadesV = ['Valencia Capital', 'Torrent', 'Mislata'];
+        let ciudadesC = ['Castellón Capital', 'Oropesa', 'Vinaroz'];
+
+        if (seleccionProvincia == 0) {
+            creaSubmenu(ciudadesA);
+        } else if (seleccionProvincia == 1) {
+            creaSubmenu(ciudadesV);
+            document.getElementById("menu2").options[2].selected = true;
+        } else if (seleccionProvincia == 2) {
+            creaSubmenu(ciudadesC);
+        }
+    }
+
+    function compruebaSelects() {
+        let seleccionProvincia = document.getElementById("menu1").selectedIndex;
+        let seleccionCiudad = document.getElementById("menu2").selectedIndex;
+
+        if (seleccionProvincia === -1 || seleccionCiudad === -1) {
+            alert('Select no seleccionado');
+        }else{
+            alert('Select correctamente seleccionado');
+        }
+    }
+
+    window.onload = function () {
+        document.getElementById("menu1").addEventListener("click", actualizaSubMenu);
+        document.getElementById("selectCiudad").addEventListener("submit", compruebaSelects);
+    }
+</script>
+
+</html>

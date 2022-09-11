@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNIs Formulario</title>
+</head>
+
+<body>
+    <!-- -Comprobar que cuando el DNI no este en blanco no de error.
+    - Cuando se envíe, comprobarlo, poner action.
+    - Solo validar la letra para el envio.
+    - hacer, la cancelación por código. -->
+    <form onsubmit="return validarFormatoDni();"> 
+        <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="infoPersonal" id="nombre"></br>
+            <label for="dni">DNI</label>
+            <input type="text" name="infoPersonal" id="dni"></br>
+            <input type="submit" value="Enviar"></br>
+        </p>
+    </form>
+
+
+    <script>
+        'use strict'
+
+        function esDNIvalido(dni) {
+            let longitud = dni.length;
+            let resultado = false;
+            let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+            if (longitud >= 2 && longitud <= 9) {
+                let numeros = dni.substr(0, longitud - 1);
+                let letra = dni.charAt(longitud - 1);
+
+                let posicion = parseInt(numeros) % 23;
+                resultado = (letras.charAt(posicion) == letra);
+            }
+            return resultado;
+        }
+
+        function validarFormatoDni() {
+            let validacion = false;
+            let regularExpresionDni = new RegExp("/^\d{8}[a-zA-Z]$/");
+            if (regularExpresionDni.test(elementoDni.value)) {
+                validacion = true;
+            }
+            return validacion;
+        }
+
+        window.onload = function () {
+            var elementoDni = document.getElementById("dni");
+            elementoDni.addEventListener("focusout", () => {
+                if (esDNIvalido(elementoDni.value)) {
+                    alert('Letra del DNI correcta');
+                } else {
+                    alert('Letra del DNI incorrecta');
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

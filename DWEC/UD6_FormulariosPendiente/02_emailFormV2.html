@@ -29,7 +29,8 @@
         function validaServidor(email) {
             let servidor = email.substr(email.indexOf('@') + 1)
             let validacion = false;
-
+            
+            // hacer con un include.
             for (let i=0;i<listaServidores.length;i++){
                 if(listaServidores[i] === servidor){
                     validacion = true;
@@ -38,16 +39,21 @@
         }
 
         window.onload=function() {
+
+            // No utilizar variables globales.
             var listaServidores=[ "terra.es" , "google.com" , "marca.es" , "yahoo.es" ];
             var elementoMail = document.getElementById("email");
             elementoDni.addEventListener("focusout", () => {
-                if (validaMail(elementoMail.value) && validaServidor(elementoMail.value)) {
+                // Guardar en variables para no llamar tanto a la función. HECHO
+                let validacionMail = validaMail(elementoMail.value);
+                let validacionServidor = validaServidor(elementoMail.value);
+                if (validacionMail && validacionServidor) {
                     alert('Formato Mail Correcto y Servidor Admitido');
-                } else if(validaMail(elementoMail.value) && !validaServidor(elementoMail.value)){
+                } else if(validacionMail && !validacionServidor){
                     alert('Formato Mail Correcto y Servidor No Admitido');
-                }else if(!validaMail(elementoMail.value) && validaServidor(elementoMail.value)){
+                }else if(!validacionMail && validacionServidor){
                     alert('Formato Mail Incorrecto y Servidor Admitido');
-                }else if(!validaMail(elementoMail.value) && !validaServidor(elementoMail.value)){
+                }else if(!validacionMail && !validacionServidor){
                     alert('Formato Mail Incorrecto y Servidor No Admitido');
                 }
             });

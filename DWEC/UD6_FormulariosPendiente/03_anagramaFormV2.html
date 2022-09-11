@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagrama formulario</title>
+</head>
+
+<body>
+    <!-- Realiza un formulario que tenga dos campos de texto. Deberá validar antes de enviarse si uno de
+    los campos es un anagrama del otro y enviarse solo si lo es. Se ignorarán mayúsculas, minúsculas y
+    espacios. -->
+    <form id="anagramaForm" action="#">
+        <p>
+            <label for="Anagrama1">Anagrama1:</label>
+            <input type="text" name="textoAnagrama" id="Anagrama1"></br>
+            <label for="Anagrama2">Anagrama2:</label>
+            <input type="text" name="textoAnagrama" id="Anagrama2"></br>
+            <input id="botonEnviar" type="submit" value="Enviar"></br>
+        </p>
+    </form>
+
+
+    <script>
+        'use strict'
+
+        function estadisticaLetras(frase) {
+            let arrayControl = Array(26).fill(0);
+            for (let i = 0; i < frase.length; i++) {
+                let caracter = parseInt(frase.charCodeAt(i));
+
+                if (caracter >= 65 && caracter <= 90) {
+                    var nuevoCaracter = (caracter - 65);
+                    arrayControl[nuevoCaracter] += 1;
+                }
+            }
+            return arrayControl.join('');
+        }
+
+        function compruebaAnagrama() {
+            let anagrama1 = document.getElementById("Anagrama1").value.toLocaleUpperCase().split(' ').join('');
+            let anagrama2 = document.getElementById("Anagrama2").value.toLocaleUpperCase().split(' ').join('');
+            let primerAnagramaControl = estadisticaLetras(anagrama1);
+            let segundoAnagramaControl = estadisticaLetras(anagrama2);
+            
+            
+            if (primerAnagramaControl === segundoAnagramaControl) {
+                alert('Son Anagramas');
+            } else {
+                alert('No son Anagramas');
+            }
+        }
+
+        window.onload = function () {
+            
+            document.getElementById("anagramaForm").addEventListener('submit', compruebaAnagrama);
+        }
+
+
+    </script>
+
+</body>
+
+</html>

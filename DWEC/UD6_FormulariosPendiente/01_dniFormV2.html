@@ -9,13 +9,19 @@
 </head>
 
 <body>
-    <form onsubmit="return validarFormatoDni();">
+    <!-- -Comprobar que cuando el DNI no este en blanco no de error.
+    - Cuando se envíe, comprobarlo, poner action.
+    - Solo validar la letra para el envio.
+    - hacer, la cancelación por código.
+    HECHO.
+    -->
+    <form id="dniForm">
         <p>
             <label for="nombre">Nombre:</label>
             <input type="text" name="infoPersonal" id="nombre"></br>
             <label for="dni">DNI</label>
             <input type="text" name="infoPersonal" id="dni"></br>
-            <input type="submit" value="Enviar"></br>
+            <input id="botonEnviar" type="submit" value="Enviar"></br>
         </p>
     </form>
 
@@ -38,25 +44,24 @@
             return resultado;
         }
 
-        function validarFormatoDni() {
-            let validacion = false;
-            let regularExpresionDni = new RegExp("/^\d{8}[a-zA-Z]$/");
-            if (regularExpresionDni.test(elementoDni.value)) {
-                validacion = true;
-            }
-            return validacion;
-        }
-
-        window.onload = function () {
-            var elementoDni = document.getElementById("dni");
-            elementoDni.addEventListener("focusout", () => {
-                if (esDNIvalido(elementoDni.value)) {
+        function validarLetraDni() {
+            let elementoDni = document.getElementById("dni").value;
+            if (elementoDni === '') {
+                alert("Debe introducir el DNI");
+            } else {
+                if (esDNIvalido(elementoDni)) {
                     alert('Letra del DNI correcta');
                 } else {
                     alert('Letra del DNI incorrecta');
                 }
-            });
+            }
+        }
 
+        window.onload = function () {
+            
+            document.getElementById("dni").addEventListener("focusout", validarLetraDni);
+            document.getElementById("dniForm").addEventListener("submit", validarLetraDni);
+            // CUIDADO e, Evento Submit tiene que apuntar al form.
         }
     </script>
 </body>
