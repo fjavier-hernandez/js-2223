@@ -7,22 +7,21 @@
 </head>
 <body>
   <ul>
-    <li><img src="images/ylw.gif" alt="amarillo" onclick="mostrarColor()"></li>
-    <li><img src="images/org.gif" alt="naranja"></li>
-    <li><img src="images/ppl.gif" alt="lila"></li>
-    <li><img src="images/blu.gif" alt="azul"></li>
-    <li><img src="images/pnk.gif" alt="rosa"></li>
-    <li><img src="images/grn.gif" alt="verde"></li>
-    <li><img src="images/ygr.gif" alt="verde claro"></li>
-    <li><img src="images/gry.gif" alt="gris"></li>
-    <li><img src="images/red.gif" alt="rojo"></li>
+    <li><img src="images/ylw.gif" alt="amarillo" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/org.gif" alt="naranja" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/ppl.gif" alt="lila" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/blu.gif" alt="azul" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/pnk.gif" alt="rosa" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/grn.gif" alt="verde" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/ygr.gif" alt="verde claro" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/gry.gif" alt="gris" onclick="mostrarColor(this.alt)"></li>
+    <li><img src="images/red.gif" alt="rojo" onclick="mostrarColor(this.alt)"></li>
   </ul>
 
   <script>
     'use strict'
 
-    function mostrarColor() {
-      let color = this.target.color;
+    function mostrarColor(color) {
       alert(`El color es: ${color}`);
     }
 

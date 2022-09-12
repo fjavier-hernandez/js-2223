@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventos JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <ul>
+    <li><img src="images/ylw.gif" alt="amarillo" id="amarillo"></li>
+    <li><img src="images/org.gif" alt="naranja" id="naranja"></li>
+    <li><img src="images/ppl.gif" alt="lila" id="lila"></li>
+    <li><img src="images/blu.gif" alt="azul" id="azul"></li>
+    <li><img src="images/pnk.gif" alt="rosa" id="rosa"></li>
+    <li><img src="images/grn.gif" alt="verde" id="verde"></li>
+    <li><img src="images/ygr.gif" alt="verde claro" id="verde claro"></li>
+    <li><img src="images/gry.gif" alt="gris" id="gris"></li>
+    <li><img src="images/red.gif" alt="rojo" id="rojo"></li>
+  </ul>
+
+  <script>
+    'use strict'
+
+    let amarillo = document.getElementById("amarillo");
+    let naranja = document.getElementById("naranja");
+    let lila = document.getElementById("lila");
+    let azul = document.getElementById("azul");
+    let rosa = document.getElementById("rosa");
+    let verde = document.getElementById("verde");
+    let verdeClaro = document.getElementById("verde claro");
+    let gris = document.getElementById("gris");
+    let rojo = document.getElementById("rojo");
+
+    amarillo.onclick = function(){
+      alert(`El color de la imagen es: ${amarillo.alt}`)
+    }
+
+    naranja.onclick = function(){
+      alert(`El color de la imagen es: ${naranja.alt}`)
+    }
+
+    lila.onclick = function(){
+      alert(`El color de la imagen es: ${lila.alt}`)
+    }
+
+    rosa.onclick = function(){
+      alert(`El color de la imagen es: ${rosa.alt}`)
+    }
+
+    azul.onclick = function(){
+      alert(`El color de la imagen es: ${azul.alt}`)
+    }
+
+    rosa.onclick = function(){
+      alert(`El color de la imagen es: ${rosa.alt}`)
+    }
+
+    verde.onclick = function(){
+      alert(`El color de la imagen es: ${verde.alt}`)
+    }
+
+    verdeClaro.onclick = function(){
+      alert(`El color de la imagen es: ${verdeClaro.alt}`)
+    }
+
+    gris.onclick = function(){
+      alert(`El color de la imagen es: ${gris.alt}`)
+    }
+
+    rojo.onclick = function(){
+      alert(`El color de la imagen es: ${rojo.alt}`)
+    }
+    
+  </script>
+</body>
+</html>

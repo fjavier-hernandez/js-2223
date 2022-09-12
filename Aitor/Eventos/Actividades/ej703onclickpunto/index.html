@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventos JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <ul>
+    <li><img src="images/ylw.gif" alt="amarillo" id="amarillo"></li>
+    <li><img src="images/org.gif" alt="naranja" id="naranja"></li>
+    <li><img src="images/ppl.gif" alt="lila" id="lila"></li>
+    <li><img src="images/blu.gif" alt="azul" id="azul"></li>
+    <li><img src="images/pnk.gif" alt="rosa" id="rosa"></li>
+    <li><img src="images/grn.gif" alt="verde" id="verde"></li>
+    <li><img src="images/ygr.gif" alt="verde claro" id="verdeClaro"></li>
+    <li><img src="images/gry.gif" alt="gris" id="gris"></li>
+    <li><img src="images/red.gif" alt="rojo" id="rojo"></li>
+  </ul>
+
+  <script>
+    'use strict'
+
+    let amarillo = document.getElementById("amarillo");
+    amarillo.addEventListener("click",()=>{alert(`El color de la imagen es: ${amarillo.alt}`)})
+    
+    // Igual para todos.
+
+
+  </script>
+</body>
+</html>
