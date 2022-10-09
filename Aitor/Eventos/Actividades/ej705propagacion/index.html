@@ -21,15 +21,13 @@
   <script>
     'use strict'
 
-    let amarillo = document.getElementById("amarillo");
-    amarillo.addEventListener("click", (evt)=>{
+    function mostrarColor(evt) {
       alert(`el color de la imagen es: ${evt.target.alt}`);
-    });
+    }
 
-    let listaDesordenada = document.getElementById("listaDesordenada");
-    listaDesordenada.addEventListener("click", (evt)=>{
-      alert(`el color de la imagen es: ${evt.target.alt}`);
-    });
+    document.getElementById("amarillo").addEventListener("click", mostrarColor);
+    document.getElementById("listaDesordenada").addEventListener("click", mostrarColor);
+
 
   </script>
 </body>

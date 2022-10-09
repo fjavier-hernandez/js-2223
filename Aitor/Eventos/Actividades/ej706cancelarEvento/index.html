@@ -22,18 +22,28 @@
 
   <script>
     'use strict'
-
-    let amarillo = document.getElementById("amarillo");
-    amarillo.addEventListener("click", (evt) => {
+    function mostrarColor(evt) {
+      console.log(evt);
+      if (evt.target.tagName === 'UL') {
+        evt.stopPropagation();
+      }
       alert(`el color de la imagen es: ${evt.target.alt}`);
-    }, false);
+    }
 
-    let listaDesordenada = document.getElementById("listaDesordenada");
-    listaDesordenada.addEventListener("click", (evt) => {
-      evt.stopPropagation();
-      alert(`el color de la imagen es: ${evt.target.alt}`);
-    }, true);
-    // SI no lo paso a true no funciona.
+    document.getElementById("amarillo").addEventListener("click", mostrarColor,false);
+    document.getElementById("listaDesordenada").addEventListener("click", mostrarColor,false);
+
+    // let amarillo = document.getElementById("amarillo");
+    // amarillo.addEventListener("click", (evt) => {
+    //   alert(`el color de la imagen es: ${evt.target.alt}`);
+    // }, false);
+
+    // let listaDesordenada = document.getElementById("listaDesordenada");
+    // listaDesordenada.addEventListener("click", (evt) => {
+    //   evt.stopPropagation();
+    //   alert(`el color de la imagen es: ${evt.target.alt}`);
+    // }, true);
+    // // SI no lo paso a true no funciona.
 
   </script>
 </body>
