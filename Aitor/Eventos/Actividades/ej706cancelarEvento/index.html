@@ -23,11 +23,12 @@
   <script>
     'use strict'
     function mostrarColor(evt) {
-      console.log(evt);
+      /* console.log(evt);
       if (evt.target.tagName === 'UL') {
         evt.stopPropagation();
-      }
+      } */
       alert(`el color de la imagen es: ${evt.target.alt}`);
+      evt.stopPropagation();
     }
 
     document.getElementById("amarillo").addEventListener("click", mostrarColor,false);

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Medita si usando Javascript en una página remota (por ejemplo mediante un fallo de seguridad XSS
+    https://es.wikipedia.org/wiki/Cross-site_scripting ) y las funciones de acceso a
+    cookies/LocalStorage, se podría robar información de cookies/LocalStorage por parte de un tercero.
+    ¿Cómo podría hacerse? Comparte tu respuesta en el foro. -->
+
+
+    <Script>
+        // Sí, con cookies obteniendo el nombre de variable del username que se haya logueado
+
+        function getCookie(username) {
+            let name = username + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        // y luego obteniendo del locastore el valor de la variable
+
+        user= JSON .parse(localStorage.getItem( "username" ));
+
+    </Script>
+</body>
+
+</html>

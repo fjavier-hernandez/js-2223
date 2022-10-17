@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie con número visitas</title>
+</head>
+<input id="consultaCookie" type="button" value="Consulta Cookie">
+<input id="eliminaCookie" type="button" value="Elimina Cookie">
+
+<body>
+    <!-- Realiza una Web que almacene en una cookie el número de visitas que has realizado, incrementado
+    el valor del número de visitas a cada visita realizada. La web debe tener una interfaz para visualizar
+    el contenido de la cookie y para eliminar la cookie. ¿Sería más sencillo y potente hacerlo con
+    localStorage? -->
+
+    <script>
+
+        function deleteCookie(cname) {
+            document.cookie = cname + '=; expires=Thu Jan 01 1970 00:00:00 GMT+0100 (CET)"';
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            let d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function compruebaCookie() {
+            let visitas = getCookie("numeroVisitas");
+            if (visitas != "") {
+                visitas++;
+                setCookie("numeroVisitas", visitas, 365);
+            } else {
+                visitas = 1;
+                setCookie("numeroVisitas", visitas, 365);
+            }
+            console.log(visitas);
+            return visitas;
+        }
+
+        window.onload = function () {
+            var numVisitas = compruebaCookie();
+            document.getElementById("consultaCookie").addEventListener('click', ()=>{
+                alert(`El número de visitas es: ${numVisitas}`);
+            });
+            document.getElementById("eliminaCookie").addEventListener('click', deleteCookie("numeroVisitas"));
+        }
+
+    </script>
+</body>
+
+</html>

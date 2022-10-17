@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie con número visitas</title>
+</head>
+<input id="consultaCookie" type="button" value="Consulta Cookie">
+<input id="eliminaCookie" type="button" value="Elimina Cookie">
+
+<body>
+    <!-- Realiza una Web que almacene en una cookie el número de visitas que has realizado, incrementado
+    el valor del número de visitas a cada visita realizada. La web debe tener una interfaz para visualizar
+    el contenido de la cookie y para eliminar la cookie. ¿Sería más sencillo y potente hacerlo con
+    localStorage? -->
+
+    <script>
+
+        function deleteCookie(cname) {
+            document.cookie = cname + '=; expires=Thu Jan 01 1970 00:00:00 GMT+0100 (CET)"';
+        }
+
+        function compruebaCookie() {
+            let visitas = document.cookie;
+            console.log(visitas);
+            if (visitas != "") {
+                visitas++;
+                document.cookie = `numeroVisitas=${visitas}; expires=Thu Dec 31 2022 00:00:00 GMT+0100 (CET)`;
+            } else {
+                visitas = 1;
+                document.cookie = `numeroVisitas=${visitas}; expires=Thu Dec 31 2022 00:00:00 GMT+0100 (CET)`;
+                
+            }
+            console.log(visitas);
+            return visitas;
+        }
+
+        window.onload = function () {
+            let numVisitas = compruebaCookie();
+            document.getElementById("consultaCookie").addEventListener('click', ()=>{
+                alert(`El número de visitas es: ${numVisitas}`);
+            });
+            document.getElementById("eliminaCookie").addEventListener('click', deleteCookie("numeroVisitas"));
+        }
+
+    </script>
+</body>
+
+</html>
